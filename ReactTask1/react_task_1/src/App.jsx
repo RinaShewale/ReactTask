@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { createBrowserRouter, Routes, Route, useParams, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Nav from './components/Nav';
 import Mainpage from './components/Mainpage';
@@ -22,6 +22,46 @@ function App() {
 
 
   const isnotfound = !["/", "/about", "/coaches", "/events", "/contact", "/service"].includes(location.pathname);
+
+
+
+
+ {/* create-browser-router */}
+    // const router = createBrowserRouter([
+    //   {
+    //     path: "/",
+    //   element: <Mainpage />,
+    //   },
+    //   {
+    //     path: "/about",
+    //   element: <About />,
+    //    },
+    //   {
+    //     path: "/coaches",
+    //   element: <Coaches />,   
+    //   },
+    //   {
+    //     path: "/events",
+    //   element: <Epage />,   
+    //    },
+    //    {
+    //     path: "/service",
+    //     element: <Service />,
+    //     children: [
+    //       { path: "personaltrainee", element: <Personaltrain /> },
+    //       { path: "fitnessclasses", element: <Fitness /> },
+    //       { path: "conditioningprograms", element: <ConditioningPro /> },
+    //       { path: "nutritionguide", element: <Guide /> },
+    //       { path: "onlinecoaching", element: <Onlinecouch /> },
+    //     ],
+    //   },
+    //   {
+    //     path: "/contact",
+    //   element: <Contact />,   
+    //  }
+
+    //   ])
+
   return (
     <main>
       {!isnotfound && <Nav />}
@@ -37,22 +77,47 @@ function App() {
 
 
 
-        {/* Dynamic Route
+      {/* Dynamic Route
       <Route path="/service/:serviceId" element={<Service serviceId={serviceId} />} /> */}
 
 
-        <Route path="/service/personaltrainee" element={<Personaltrain />} />
+      <Route path="/service/personaltrainee" element={<Personaltrain />} />
         <Route path="/service/fitnessclasses" element={<Fitness />} />
         <Route path="/service/conditioningprograms" element={<ConditioningPro />} />
         <Route path="/service/nutritionguide" element={<Guide />} />
         <Route path="/service/onlinecoaching" element={<Onlinecouch />} />
 
 
+      {/* <Route path="/service" element={<Service />} >
 
-      {/* not found page */}
+          <Route path="/service/personaltrainee" element={<Personaltrain />} />
+          <Route path="/service/fitnessclasses" element={<Fitness />} />
+          <Route path="/service/conditioningprograms" element={<ConditioningPro />} />
+          <Route path="/service/nutritionguide" element={<Guide />} />
+          <Route path="/service/onlinecoaching" element={<Onlinecouch />} />
+        </Route>
+ */}
 
-        <Route path="*" element={<Notfound />} />
+
+
+
+
+
+      {/* not found page */} 
+
+     <Route path="*" element={<Notfound />} />
       </Routes>
+
+
+
+
+     
+
+
+
+      {/* <RouterProvider router={router} /> */}
+
+
     </main>
   );
 }
